@@ -2,7 +2,7 @@ import React from 'react';
 
 const Awards = () => {
     return (
-        <div className='container'>
+        <div className='container p-5'>
             <div className='row'>
                 <div className='col-6 p-5'>
                     <img src='images\largestBroker.svg' alt='largest_broker'/>
@@ -43,7 +43,6 @@ const Awards = () => {
                     </div>
                 </div>
             </div>
-            <h1>Awards</h1>
         </div>
     );
 };
