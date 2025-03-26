@@ -319,6 +319,24 @@ hr {
   margin-right: 8px;
 }
 
+.avatar {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  position: relative;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: rgb(221, 139, 221);
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  text-align: center;
+  display: flex;
+  background: rgb(252, 229, 252);
+  margin-right: 8px;
+  margin-bottom: 12px;
+}
+
 .profile .username {
   font-size: 0.8rem;
   font-weight: 300;
