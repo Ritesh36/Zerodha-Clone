@@ -1,9 +1,10 @@
 import React from "react";
+import { holdings } from "../Data/data.js";
 
 const Holdings = () => {
   return (
     <>
-      <h3 className="title">Holdings (13)</h3>
+      <h3 className="title">Holdings ({ holdings.length })</h3>
 
       <div className="order-table">
         <table>
@@ -17,6 +18,11 @@ const Holdings = () => {
             <th>Net chg.</th>
             <th>Day chg.</th>
           </tr>
+
+          {holdings.map((stock, index => {
+            const currVal = stock.price * stock.qty;
+            const isProfit = currVal-stock.avg*stock.qty >= 0.0;
+          }))}
         </table>
       </div>
 
