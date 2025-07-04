@@ -9,12 +9,12 @@ const Holdings = () => {
       <div className="order-table">
         <table>
           <tr>
-            <th>Product</th>
             <th>Instrument</th>
             <th>Qty.</th>
             <th>Avg. cost</th>
-            <th>LTP</th>
+            <th>Cur. Val</th>
             <th>P&L</th>
+            <th>Net Chg.</th>
             <th>Day chg.</th>
           </tr>
 
@@ -26,12 +26,12 @@ const Holdings = () => {
 
             return (
               <tr key={index}>
-                <td>{stock.product}</td>
                 <td>{stock.name}</td>
                 <td>{stock.qty}</td>
                 <td>{stock.avg.toFixed(2)}</td>
                 <td>{stock.price.toFixed(2)}</td>
                 <td className={profClass}>{(currVal - stock.avg * stock.qty).toFixed(2)}</td>
+                <td className={profClass}>{stock.net}</td>
                 <td className={dayChange}>{stock.day}</td>
               </tr>
             )
@@ -54,7 +54,7 @@ const Holdings = () => {
         </div>
         <div className="col">
           <h5>1,553.40 (+5.20%)</h5>
-          <p>P&L</p>
+          <p  style={{marginLeft: "60px"}}>P&L</p>
         </div>
       </div>
     </>

@@ -7,8 +7,9 @@ const TopBar = () => {
         <div className="topbar-container">
             <div className='indices-container'>
                 <div className='nifity'>
-                    <p className='index'>NIFITY 50</p>
-                    <p className='index-points'>{100.2}</p>
+                    <span className='index'>NIFITY 50</span>
+                    &nbsp; &nbsp; &nbsp;
+                    <span className='index-points'>{100.2}</span>
                     <p className='percent'></p>
                 </div>
                 <div className='sensex'>

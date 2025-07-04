@@ -1,9 +1,10 @@
-import React, {Fragment, useEffect} from 'react';
+import React from 'react';
+import { positions } from '../Data/data';
 
 const Positions = () => {
     return (
         <>
-      <h3 className="title">Positions ()</h3>
+      <h3 className="title">Positions ({positions.length})</h3>
 
       <div className="order-table">
         <table>
@@ -16,6 +17,25 @@ const Positions = () => {
             <th>P&L</th>
             <th>Chg.</th>
           </tr>
+
+          {positions.map((stock, index) => {
+              const currVal = stock.price * stock.qty;
+              const isProfit = currVal-stock.avg*stock.qty >= 0.0;
+              const profClass = isProfit ? "profit" : "loass";
+              const dayChange = stock.isLoss ? "loss" : "profit";
+          
+              return (
+                <tr key={index}>
+                  <td>{stock.product}</td>
+                  <td>{stock.name}</td>
+                  <td>{stock.qty}</td>
+                  <td>{stock.avg.toFixed(2)}</td>
+                  <td>{stock.price.toFixed(2)}</td>
+                  <td className={profClass}>{(currVal - stock.avg * stock.qty).toFixed(2)}</td>
+                  <td className={dayChange}>{stock.day}</td>
+                </tr>
+              )
+            })}
         </table>
       </div>
     </>
