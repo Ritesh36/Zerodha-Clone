@@ -2,6 +2,9 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+
 
 const { HoldingModel } = require("./model/HoldingsModel.js");
 const { PositionsModel } = require("./model/PositionsModel.js");
@@ -9,6 +12,9 @@ const { PositionsModel } = require("./model/PositionsModel.js");
 const uri = process.env.MONGO_URL;
 
 const app = express();
+
+app.use(cors());
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -180,6 +186,27 @@ app.use(express.urlencoded({ extended: true }));
 
 //   res.send("Positions Added Successfully");
 //  });
+
+app.get("/allHoldings", async (req, res) => {
+  try {
+    const holdings = await HoldingModel.find({});
+    res.json(holdings);
+  } catch (error) {
+    console.error("Error fetching holdings:", error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.get("/allPositions", async (req, res) => {
+  try {
+    const positions = await PositionsModel.find({});
+    res.json(positions);
+  } catch (error) {
+    console.error("Error fetching positions:", error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+})
+
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("App Started!");
